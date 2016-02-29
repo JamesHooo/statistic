@@ -12,7 +12,13 @@ if(isset($_SERVER['QUERY_STRING']))
 {
 	if($_SERVER['QUERY_STRING'] == 'hourly')
 	{
-		$sql="SELECT from_unixtime(timestamp,'%m-%d %H') as t,act,count(1),count(distinct ip) from record group by t,act";
+		$Y=date("Y");
+		$M=date("m");
+		$D=date("d");
+		$today_begin=mktime(0,0,0,$M,$D,$Y);
+		$today_end=$today_begin+86400;
+		
+		$sql="SELECT from_unixtime(timestamp,'%Y-%m-%d %H') as t,act,count(1),count(distinct ip) from record where timestamp>=".$today_begin." and timestamp<".$today_end." group by t,act";
 		$res=mysql_query($sql);
 		print "<tr>";
 		print "<th>Date</th>";
