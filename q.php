@@ -8,7 +8,7 @@ if(!$con)
 }
 mysql_select_db("counter", $con);
 
-if(isset($_SERVER['QUERY_STRING']))
+if(isset($_SERVER['QUERY_STRING']) && !empty($_SERVER['QUERY_STRING']))
 {
 	if($_SERVER['QUERY_STRING'] == 'hourly')
 	{
