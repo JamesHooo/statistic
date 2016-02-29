@@ -12,7 +12,7 @@ if(isset($_SERVER['QUERY_STRING']))
 {
 	if($_SERVER['QUERY_STRING'] == 'hourly')
 	{
-		$sql="SELECT from_unixtime(timestamp,'%m-%d $H') as t,act,count(1),count(distinct ip) from record group by t,act";
+		$sql="SELECT from_unixtime(timestamp,'%m-%d %H') as t,act,count(1),count(distinct ip) from record group by t,act";
 		$res=mysql_query($sql);
 		print "<tr>";
 		print "<th>Date</th>";
@@ -32,7 +32,7 @@ if(isset($_SERVER['QUERY_STRING']))
 	}
 	else 
 	{
-		print "q.php?hour or q.php";		
+		print "q.php?hourly or q.php";		
 	}
 }
 else 
