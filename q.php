@@ -1,4 +1,4 @@
-<table>
+<table border=1>
 <?php
 $con=mysql_connect("127.0.0.1:5689","counter","1234");
 if(!$con)
